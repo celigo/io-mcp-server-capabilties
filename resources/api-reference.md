@@ -112,7 +112,7 @@ Standard CRUD. (Script logs, audit trail, and debug capture are deferred from th
 - **iClients** — `/v1/iclients`
 - **Lookup Caches** — `/v1/lookupcaches`
 - **Tools** — `/v1/tools`
-- **MCP Servers** — `/v1/mcpServers`
+- **MCP Servers** — `/v1/mcpservers`
 - **Environments** — `/v1/environments` (read-only: `list_environments`)
 
 ## Tool Naming Conventions
