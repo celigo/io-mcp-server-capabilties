@@ -1,0 +1,151 @@
+# Capabilities manifest for celigo/io-mcp-server.
+#
+# This file is the single source of truth for the prompts and resources
+# advertised by the Ora MCP server (via prompts/list, prompts/get,
+# resources/list, resources/read in the MCP protocol).
+#
+# Schema:
+#   prompts:
+#     - name:        unique snake-or-kebab-case identifier
+#       description: 1-2 sentence summary shown in prompts/list
+#       file:        path to the .md body, relative to this manifest
+#       arguments:   optional list of { name, description, required } objects
+#                    that will be substituted via {{var}} / {{#if var}} blocks
+#                    in the prompt body
+#   resources:
+#     - uri:         celigo://resources/<slug>
+#       name:        human-readable name shown in resources/list
+#       description: 1-2 sentence summary
+#       mimeType:    MIME type of the file (currently always text/markdown)
+#       file:        path to the .md body, relative to this manifest
+
+prompts:
+  - name: getting-started
+    description: >-
+      Orientation for the Ora MCP server: core Celigo concepts (connection,
+      export, import, flow, integration, script, API, tool), bottom-up build
+      order, the discover-before-build toolset, planning discipline, sandbox
+      vs production rules, and a routing table to the right follow-up prompt.
+    file: prompts/getting-started.md
+
+  - name: troubleshoot-flow
+    description: >-
+      Diagnose a failing flow: check the latest job, classify the problem
+      (total failure, partial errors, empty run, stuck), inspect error
+      details, identify root cause, and recommend fixes.
+    file: prompts/troubleshoot-flow.md
+    arguments:
+      - name: flowId
+        description: The ID of the flow to troubleshoot. If omitted, the agent will help identify the flow.
+        required: false
+
+  - name: audit-account-health
+    description: >-
+      Comprehensive health check of the Celigo account: resource counts,
+      flows with errors, connection health, and prioritized issue list with
+      recommendations.
+    file: prompts/audit-account-health.md
+    arguments: []
+
+  - name: diagnose-connection
+    description: >-
+      Diagnose a failing or offline connection: check status, identify the
+      root cause based on connection type (HTTP/OAuth, NetSuite, Salesforce,
+      database, FTP), assess blast radius, and recommend remediation.
+    file: prompts/diagnose-connection.md
+    arguments:
+      - name: connectionId
+        description: The ID of the connection to diagnose. If omitted, the agent will help identify the connection.
+        required: false
+
+  - name: review-flow-config
+    description: >-
+      Review a flow's configuration for correctness: validate structure
+      (generators, processors, routers), check connection health, inspect
+      scheduling, identify common issues, and provide improvement
+      recommendations.
+    file: prompts/review-flow-config.md
+    arguments:
+      - name: flowId
+        description: The ID of the flow to review. If omitted, the agent will help identify the flow.
+        required: false
+
+  - name: plan-new-integration
+    description: >-
+      Plan a new integration: discover existing templates, check for reusable
+      resources, determine connection requirements, design the flow
+      architecture, and produce a step-by-step build plan.
+    file: prompts/plan-new-integration.md
+    arguments:
+      - name: sourceApp
+        description: The source application name (e.g., Shopify, NetSuite, Salesforce).
+        required: false
+      - name: destinationApp
+        description: The destination application name (e.g., NetSuite, Salesforce, Snowflake).
+        required: false
+
+  - name: writing-handlebars
+    description: >-
+      Author Handlebars expressions for Celigo resource configurations: pick
+      the right brace style for the target context, use the correct AFE 2.0
+      record prefix, compose helpers, and avoid the common pitfalls (date
+      arithmetic in milliseconds, lexicographic compare, masked-credential
+      overwrites).
+    file: prompts/writing-handlebars.md
+
+  - name: writing-sql
+    description: >-
+      Author SQL queries for Celigo RDBMS exports and imports — SELECT,
+      INSERT, UPDATE, UPSERT, MERGE, delta, once, and bulk operations across
+      Snowflake, Postgres, MySQL, MariaDB, SQL Server, Azure Synapse, Oracle,
+      BigQuery, and Redshift. Covers query patterns, dialect differences,
+      queryType selection, bulkInsert/bulkLoad, and the common gotchas.
+    file: prompts/writing-sql.md
+
+resources:
+  - uri: celigo://resources/glossary
+    name: Product Glossary
+    description: >-
+      Official Celigo terminology and definitions — core resource types
+      (Connection, Export, Import, Flow, Integration, Script, API, Tool),
+      supporting resources, and key platform concepts.
+    mimeType: text/markdown
+    file: resources/glossary.md
+
+  - uri: celigo://resources/tool-usage-guide
+    name: Tool Usage Guide
+    description: >-
+      How to approach common tasks with the Celigo MCP tools — recommended
+      starting points, build order, task-to-tool routing, error triage
+      workflow, and important rules.
+    mimeType: text/markdown
+    file: resources/tool-usage-guide.md
+
+  - uri: celigo://resources/error-patterns
+    name: Error Pattern Reference
+    description: >-
+      Common Celigo error codes, what they mean, and typical resolutions —
+      problem categories, HTTP status classification, error source types,
+      symptom-to-cause table, and a diagnostic decision tree.
+    mimeType: text/markdown
+    file: resources/error-patterns.md
+
+  - uri: celigo://resources/connector-catalog
+    name: Connector Catalog
+    description: >-
+      List of supported connection types, export adaptor types, import
+      adaptor types, and pre-built connectors (550+ HTTP connectors, 590+
+      trading partner connectors, 340+ marketplace templates).
+    mimeType: text/markdown
+    file: resources/connector-catalog.md
+
+  - uri: celigo://resources/api-reference
+    name: API Reference (OpenAPI v1)
+    description: >-
+      Summary of the Celigo integrator.io public REST API v1 that backs the
+      MCP tools. Organized by resource with paths, HTTP methods, and MCP
+      tool-name mappings. Use this when you need to understand the underlying
+      API for a tool, or to discover endpoints/tools by resource. Links to
+      the authoritative OpenAPI spec in the integrator-api-specs repo.
+    mimeType: text/markdown
+    file: resources/api-reference.md
