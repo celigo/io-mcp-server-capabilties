@@ -39,8 +39,8 @@ The MCP tool name is shown in `backticks` where helpful.
 - `GET /v1/flows/{_id}/errors` — `get_flow_error_summary`
 - `GET /v1/flows/{_id}/{stepId}/errors` — `get_flow_errors`
 - `GET /v1/flows/{_id}/{stepId}/resolved` — `get_flow_resolved_errors`
-- `PUT /v1/flows/{_id}/{stepId}/errors/resolve` — `resolve_errors`
-- `PUT /v1/flows/{_id}/{stepId}/errors/retry` — `retry_errors`
+- `PUT /v1/flows/{_id}/{stepId}/resolved` — `resolve_errors` (body: `{ errors: [<errorId>, ...] }`)
+- `POST /v1/flows/{_id}/{stepId}/retry` — `retry_errors` (body: `{ retryDataKeys }` or `{ errorIds }` or `{ errorFileId }`; note no `errors/` prefix)
 - `PUT /v1/flows/{_id}/{stepId}/errors/assign` — `assign_errors` (body: `{ errorIds, email, _userId? }`)
 - `PUT /v1/flows/{_id}/{stepId}/tags` — `tag_errors` (body: `{ errorIds, tagIds }`; tag codes from `GET /v1/tags`)
 
