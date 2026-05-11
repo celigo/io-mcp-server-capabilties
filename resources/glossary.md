@@ -1,3 +1,12 @@
+---
+uri: celigo://resources/glossary
+name: Product Glossary
+description: >-
+  Official Celigo terminology and definitions — core resource types
+  (Connection, Export, Import, Flow, Integration, Script, API, Tool),
+  supporting resources, and key platform concepts.
+mimeType: text/markdown
+---
 # Celigo Product Glossary
 
 ## Core Resource Types

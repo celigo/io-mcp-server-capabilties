@@ -1,3 +1,14 @@
+---
+uri: celigo://resources/api-reference
+name: API Reference (OpenAPI v1)
+description: >-
+  Summary of the Celigo integrator.io public REST API v1 that backs the
+  MCP tools. Organized by resource with paths, HTTP methods, and MCP
+  tool-name mappings. Use this when you need to understand the underlying
+  API for a tool, or to discover endpoints/tools by resource. Links to
+  the authoritative OpenAPI spec in the integrator-api-specs repo.
+mimeType: text/markdown
+---
 # Celigo API Reference (OpenAPI v1)
 
 This resource summarizes the Celigo integrator.io public REST API (v1) that backs the Celigo MCP tools. The authoritative, machine-readable source is the OpenAPI 3.1 specification in the sibling repository [`integrator-api-specs`](https://github.com/celigo/integrator-api-specs) (source under `specs/v1/`, bundled to `dist/v1/openapi.yaml`).

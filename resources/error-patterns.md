@@ -1,3 +1,12 @@
+---
+uri: celigo://resources/error-patterns
+name: Error Pattern Reference
+description: >-
+  Common Celigo error codes, what they mean, and typical resolutions —
+  problem categories, HTTP status classification, error source types,
+  symptom-to-cause table, and a diagnostic decision tree.
+mimeType: text/markdown
+---
 # Celigo Error Pattern Reference
 
 ## Problem Categories

@@ -1,3 +1,12 @@
+---
+uri: celigo://resources/tool-usage-guide
+name: Tool Usage Guide
+description: >-
+  How to approach common tasks with the Celigo MCP tools — recommended
+  starting points, build order, task-to-tool routing, error triage
+  workflow, and important rules.
+mimeType: text/markdown
+---
 # Celigo MCP Tool Usage Guide
 
 ## Getting Started

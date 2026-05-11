@@ -1,3 +1,12 @@
+---
+uri: celigo://resources/connector-catalog
+name: Connector Catalog
+description: >-
+  List of supported connection types, export adaptor types, import
+  adaptor types, and pre-built connectors (550+ HTTP connectors, 590+
+  trading partner connectors, 340+ marketplace templates).
+mimeType: text/markdown
+---
 # Celigo Connector Catalog
 
 ## Overview
